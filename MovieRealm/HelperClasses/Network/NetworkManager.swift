@@ -80,8 +80,10 @@ class NetworkManager: NSObject {
             } else {
                 print("Reachable via Cellular")
             }
+           
         } else {
             isReachable = false
+            UIApplication.shared.keyWindow?.currentViewController()?.showAlert(title: "No Internet Connection", message: "", buttons: ["Okay"], actions: nil)
         }
     }
 }

@@ -22,9 +22,10 @@ class MovieDetailVC: UIViewController {
     @IBOutlet weak var movieImgView: UIImageView!
     @IBOutlet weak var movieDescriptionTxtView: UITextView!
     @IBOutlet weak var trailorView: YTPlayerView!
-
+    
     @IBOutlet weak var ratingLbl: UILabel!
     
+    @IBOutlet weak var imgBorderView: UIView!
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,13 +34,24 @@ class MovieDetailVC: UIViewController {
         assignValuesAndUpdateUI()
         showProgressView(with: "Fetching trailer")
         movieDetailVM?.fetchMovieVideoUrlFromApi()
+        
+        movieImgView.clipsToBounds = true
+        movieImgView.layer.cornerRadius = 4.0
+        
+        imgBorderView.layer.masksToBounds = false
+        imgBorderView.layer.cornerRadius = 4.0
+        imgBorderView.layer.shadowColor = UIColor.darkGray.cgColor
+        imgBorderView.layer.shadowRadius = 4
+        imgBorderView.layer.shadowOpacity = 0.5
+        imgBorderView.layer.shadowOffset = CGSize.zero
+        
     }
-
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
         trailorView.stopVideo()
     }
-
+    
     // MARK: - Setup and Assign
     func assignValuesAndUpdateUI() {
         movieTitleLbl.text = movie?.movieTitle
@@ -58,7 +70,6 @@ class MovieDetailVC: UIViewController {
             trailorView.load(withVideoId: key)
         }
     }
-
 }
 
 extension MovieDetailVC: MovieDetailDelegate {

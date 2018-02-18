@@ -45,11 +45,18 @@ extension UIViewController {
     /// - Parameters:
     ///   - title: title of the alert
     ///   - message: description of the alert
-    func showAlert(title: String, message: String) {
+    func showAlert(title: String?, message: String?, buttons: [String], actions: ((Int) -> Void)?) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let action = UIAlertAction(title: "Okay", style: .default, handler: nil)
-        alert.addAction(action)
-        present(alert, animated: true, completion: nil)
+        //alert.view.backgroundColor = UIColor.orange
+        for (i, button) in buttons.enumerated() {
+            let action = UIAlertAction(title: button, style: .default, handler: {_ in
+                actions?(i)
+            })
+            alert.addAction(action)
+        }
+        DispatchQueue.main.async {
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
     /// Makes a particular view controller as root

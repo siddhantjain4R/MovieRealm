@@ -58,6 +58,7 @@ class MovieListViewModel: NSObject {
     }
     
     func resetAllSearchVariables(reload: Bool = true) {
+        collectionView?.isHidden = false
         searchString = ""
         searchMovieArr.removeAll()
         searchTotalPages = 0
@@ -101,13 +102,16 @@ class MovieListViewModel: NSObject {
             self?.parseResponseFromMovieListApi(response: response)
             self?.reloadCollectionView()
         }) { (response, error) in
+            DispatchQueue.main.async { [weak self] in
+                self?.collectionView?.bottomRefreshControl?.endRefreshing()
+                self?.controller?.hideProgressView()
+            }
             guard let errorMsg = error else {
                 return
             }
             print(errorMsg.localizedDescription)
             DispatchQueue.main.async { [weak self] in
-                self?.collectionView?.bottomRefreshControl?.endRefreshing()
-                self?.controller?.hideProgressView()
+                self?.controller?.showAlert(title: "Something went wrong", message: "", buttons: ["Okay"], actions: nil)
             }
         }
     }
@@ -121,13 +125,16 @@ class MovieListViewModel: NSObject {
             self?.parseResponseFromMovieListApi(response: response)
             self?.reloadCollectionView()
         }) { (response, error) in
+            DispatchQueue.main.async { [weak self] in
+                self?.collectionView?.bottomRefreshControl?.endRefreshing()
+                self?.controller?.hideProgressView()
+            }
             guard let errorMsg = error else {
                 return
             }
             print(errorMsg.localizedDescription)
             DispatchQueue.main.async { [weak self] in
-                self?.collectionView?.bottomRefreshControl?.endRefreshing()
-                self?.controller?.hideProgressView()
+                self?.controller?.showAlert(title: "Something went wrong", message: "", buttons: ["Okay"], actions: nil)
             }
         }
     }
@@ -144,6 +151,9 @@ class MovieListViewModel: NSObject {
                 let movie = Movie(movie: movieData)
                 isSearchRequest ? searchMovieArr.append(movie) : movieArr.append(movie)
             })
+            if searchCurrentPage == 1, resultArr.count == 0 {
+                collectionView?.isHidden = true
+            }
         }
         if isSearchRequest {
             searchTotalPages = response["total_pages"] as? Int ?? 0

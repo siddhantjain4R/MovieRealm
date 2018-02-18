@@ -32,11 +32,12 @@ class MovieDetailViewModel: NSObject {
             self?.parseVideoUrl(response: response)
             self?.controller?.hideProgressView()
         }) { (response, error) in
+            self.controller?.hideProgressView()
             guard let errorMsg = error else {
                 return
             }
             print(errorMsg.localizedDescription)
-            self.controller?.hideProgressView()
+            self.controller?.showAlert(title: "Something went wrong", message: "", buttons: ["Okay"], actions: nil)
         }
     }
     

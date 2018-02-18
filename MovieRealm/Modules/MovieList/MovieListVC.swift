@@ -42,6 +42,8 @@ class MovieListVC: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.movieListViewModel? .fetchMoviesFromApi(filter: MovieFilterType.mostPopular.rawValue)
         }
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        //self.navigationItem.largeTitleDisplayMode = .automatic
         self.navigationItem.title = "Most Popular"
     }
     
@@ -60,9 +62,11 @@ class MovieListVC: UIViewController {
             } else {
                 searchViewHeightConstraint.constant = 0
             }
+            self.navigationController?.navigationBar.prefersLargeTitles = true
         } else {
             searchViewHeightConstraint.constant = 56
             movieSearchBar.isHidden = isFilterView
+            self.navigationController?.navigationBar.prefersLargeTitles = false
         }
     }
     
@@ -70,12 +74,13 @@ class MovieListVC: UIViewController {
         dropdown.direction = .bottom
         dropdown.anchorView = filterLbl
         dropdown.bottomOffset = CGPoint(x: 0, y: 56)
-        dropdown.dataSource = ["Most Popular", "Highest Rated"]
+        dropdown.dataSource = ["Most Popular", "Top Rated"]
         dropdown.selectionAction = { [unowned self] (index, item) in
             self.filterLbl.text = item
             self.navigationItem.title = item
             self.showProgressView(with: "Fetching movies")
             self.movieListViewModel?.currentPage = 1
+            self.showHideSearchOrFilterView(isFilterView: true)
             if index == 0  {
                 self.movieListViewModel? .fetchMoviesFromApi(filter: MovieFilterType.mostPopular.rawValue)
             } else {

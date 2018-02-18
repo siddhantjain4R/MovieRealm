@@ -16,6 +16,7 @@ class MovieListViewModel: NSObject {
     var totalPages = 0
     var currentPage = 1
     var cellSize: CGSize = CGSize.zero
+    var currentFilter = MovieFilterType.mostPopular.rawValue
     let bottomRefreshController = UIRefreshControl()
     weak var controller: UIViewController?
     weak var collectionView: UICollectionView?
@@ -39,23 +40,29 @@ class MovieListViewModel: NSObject {
         collectionView?.dataSource = self
         collectionView?.delegate = self
     }
+
     func reloadCollectionView() {
         DispatchQueue.main.async { [weak self] in
             self?.controller?.hideProgressView()
             self?.collectionView?.bottomRefreshControl?.endRefreshing()
+            if self?.currentPage == 1 {
+                self?.collectionView?.contentOffset = CGPoint(x: 0, y: 0)
+            }
             self?.collectionView?.reloadData()
         }
     }
+
     
     // MARK: - Api and Parse method
     @objc func fetchMoreMovie() {
         if currentPage < totalPages {
             currentPage += 1
-            fetchMoviesFromApi(pageCount: currentPage, filter: MovieFilterType.mostPopular.rawValue)
+            fetchMoviesFromApi(pageCount: currentPage, filter: currentFilter)
         }
     }
     
     func fetchMoviesFromApi(pageCount: Int = 1, filter: String = MovieFilterType.mostPopular.rawValue) {
+        currentFilter = filter
         let url = "\(filter)?api_key=\(Constant.apiKeyMovieDB)&language=en-US&page=\(pageCount)"
         NetworkManager.sharedInstance.requestFor(path: url, param: nil, httpMethod: .get, includeHeader: false, success: { [weak self] (response) in
             print(response)
@@ -74,6 +81,9 @@ class MovieListViewModel: NSObject {
     }
     
     func parseResponseFromMovieListApi(response: [String: Any]) {
+        if currentPage == 1 {
+            movieArr.removeAll()
+        }
         if let resultArr = response["results"] as? [[String: Any]] {
             resultArr.forEach({ (movieData) in
                 let movie = Movie(movie: movieData)

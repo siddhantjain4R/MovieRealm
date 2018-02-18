@@ -13,7 +13,6 @@ import Reachability
 class NetworkManager: NSObject {
     // MARK: - Variables
     var isReachable = false
-    let serverUrl = "http://35.154.75.20:9090/"
     fileprivate var reachability: Reachability?
 
     // MARK: - Initialize Methods
@@ -31,6 +30,7 @@ class NetworkManager: NSObject {
     override init() {
         super.init()
         reachability = Reachability.init()
+        isReachable = reachability?.connection != .none
         NotificationCenter.default.addObserver(self, selector: #selector(self.reachabilityChanged(_:)), name: Notification.Name.reachabilityChanged, object: reachability)
         do {
             try reachability!.startNotifier()
@@ -41,12 +41,12 @@ class NetworkManager: NSObject {
     // MARK: - Request Method
     func requestFor(path: String, param: [String: Any]?, httpMethod: HTTPMethod, includeHeader: Bool, success:@escaping (_ response: [String: Any]) -> Void, failure:@escaping (_ response: [String: Any], _ error: Error?) -> Void) {
         
-        let completeURL = serverUrl + path
+        let completeURL = Constant.serverURL + path
         var headerParam: HTTPHeaders?
-        if includeHeader {
-            headerParam = ["Authorization": "Bearer FlochatIosTestApi"
-            ]
-        }
+//        if includeHeader {
+//            headerParam = ["Authorization": "Bearer FlochatIosTestApi"
+//            ]
+//        }
         if isReachable {
             Alamofire.request(completeURL, method: httpMethod, parameters: param, encoding: JSONEncoding.default, headers: headerParam).responseJSON { response in
                 debugPrint(response)

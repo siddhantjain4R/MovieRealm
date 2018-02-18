@@ -12,8 +12,8 @@ class MovieListVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        let m = MovieListViewModel()
+        m.fetchMoviesFromApi(pageCount: 1, filter: MovieFilterType.mostPopular.rawValue)
     }
 
     override func didReceiveMemoryWarning() {

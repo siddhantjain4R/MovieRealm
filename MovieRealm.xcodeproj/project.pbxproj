@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		81F1FBF47DBDE089541CA8B2 /* Pods_MovieRealm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7334C80A4C47223AC59FB534 /* Pods_MovieRealm.framework */; };
+		9E13C81A20397BE600DC3D2E /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E13C81920397BE600DC3D2E /* Enums.swift */; };
 		9E2195F920389A2D00735DF2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2195F820389A2D00735DF2 /* AppDelegate.swift */; };
 		9E2195FE20389A2D00735DF2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E2195FC20389A2D00735DF2 /* Main.storyboard */; };
 		9E21960020389A2D00735DF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9E2195FF20389A2D00735DF2 /* Assets.xcassets */; };
@@ -15,12 +16,18 @@
 		9E2196122038A23D00735DF2 /* MovieListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2196112038A23D00735DF2 /* MovieListVC.swift */; };
 		9E2196142038A2BE00735DF2 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2196132038A2BE00735DF2 /* Movie.swift */; };
 		9E2196162038A48D00735DF2 /* MovieListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2196152038A48D00735DF2 /* MovieListViewModel.swift */; };
+		9E2196392038B58B00735DF2 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2196332038B58B00735DF2 /* NetworkManager.swift */; };
+		9E21963A2038B58B00735DF2 /* BasicExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2196352038B58B00735DF2 /* BasicExtensions.swift */; };
+		9E21963B2038B58B00735DF2 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2196362038B58B00735DF2 /* UIViewController+Extension.swift */; };
+		9E21963C2038B58B00735DF2 /* CommonMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2196382038B58B00735DF2 /* CommonMethods.swift */; };
+		9E21963E2038B63A00735DF2 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E21963D2038B63A00735DF2 /* Constant.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		054F01DDF0DE911EC4833623 /* Pods-MovieRealm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieRealm.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MovieRealm/Pods-MovieRealm.debug.xcconfig"; sourceTree = "<group>"; };
 		7334C80A4C47223AC59FB534 /* Pods_MovieRealm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieRealm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A36A5C03D582F08DFFC024B /* Pods-MovieRealm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieRealm.release.xcconfig"; path = "Pods/Target Support Files/Pods-MovieRealm/Pods-MovieRealm.release.xcconfig"; sourceTree = "<group>"; };
+		9E13C81920397BE600DC3D2E /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		9E2195F520389A2D00735DF2 /* MovieRealm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieRealm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E2195F820389A2D00735DF2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9E2195FD20389A2D00735DF2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -30,10 +37,11 @@
 		9E2196112038A23D00735DF2 /* MovieListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListVC.swift; sourceTree = "<group>"; };
 		9E2196132038A2BE00735DF2 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		9E2196152038A48D00735DF2 /* MovieListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewModel.swift; sourceTree = "<group>"; };
-		9E2196272038A7F700735DF2 /* CommonMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonMethods.swift; sourceTree = "<group>"; };
-		9E21962A2038A82800735DF2 /* BasicExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicExtensions.swift; sourceTree = "<group>"; };
-		9E21962B2038A82800735DF2 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
-		9E2196302038A84B00735DF2 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		9E2196332038B58B00735DF2 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		9E2196352038B58B00735DF2 /* BasicExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicExtensions.swift; sourceTree = "<group>"; };
+		9E2196362038B58B00735DF2 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		9E2196382038B58B00735DF2 /* CommonMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonMethods.swift; sourceTree = "<group>"; };
+		9E21963D2038B63A00735DF2 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,7 +80,7 @@
 				9E21960A20389C2900735DF2 /* Application */,
 				9E2196172038A4CD00735DF2 /* Storyboards */,
 				9E21960F20389C8800735DF2 /* Modules */,
-				9E21961C2038A7A000735DF2 /* HelperClasses */,
+				9E2196312038B58B00735DF2 /* HelperClasses */,
 				9E2195FF20389A2D00735DF2 /* Assets.xcassets */,
 			);
 			path = MovieRealm;
@@ -114,42 +122,42 @@
 			name = Storyboards;
 			sourceTree = "<group>";
 		};
-		9E21961C2038A7A000735DF2 /* HelperClasses */ = {
+		9E2196312038B58B00735DF2 /* HelperClasses */ = {
 			isa = PBXGroup;
 			children = (
-				9E21962F2038A84B00735DF2 /* Network */,
-				9E2196292038A82800735DF2 /* Extensions */,
-				9E2196242038A7F700735DF2 /* Common */,
+				9E2196322038B58B00735DF2 /* Network */,
+				9E2196342038B58B00735DF2 /* Extensions */,
+				9E2196372038B58B00735DF2 /* Common */,
 			);
 			path = HelperClasses;
 			sourceTree = "<group>";
 		};
-		9E2196242038A7F700735DF2 /* Common */ = {
+		9E2196322038B58B00735DF2 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				9E2196272038A7F700735DF2 /* CommonMethods.swift */,
+				9E2196332038B58B00735DF2 /* NetworkManager.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		9E2196342038B58B00735DF2 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9E2196352038B58B00735DF2 /* BasicExtensions.swift */,
+				9E2196362038B58B00735DF2 /* UIViewController+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		9E2196372038B58B00735DF2 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				9E2196382038B58B00735DF2 /* CommonMethods.swift */,
+				9E21963D2038B63A00735DF2 /* Constant.swift */,
+				9E13C81920397BE600DC3D2E /* Enums.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
-		};
-		9E2196292038A82800735DF2 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				9E21962A2038A82800735DF2 /* BasicExtensions.swift */,
-				9E21962B2038A82800735DF2 /* UIViewController+Extension.swift */,
-			);
-			name = Extensions;
-			path = MovieRealm/HelperClasses/Extensions;
-			sourceTree = SOURCE_ROOT;
-		};
-		9E21962F2038A84B00735DF2 /* Network */ = {
-			isa = PBXGroup;
-			children = (
-				9E2196302038A84B00735DF2 /* NetworkManager.swift */,
-			);
-			name = Network;
-			path = MovieRealm/HelperClasses/Network;
-			sourceTree = SOURCE_ROOT;
 		};
 		A6CF6866356C33EF294578F2 /* Frameworks */ = {
 			isa = PBXGroup;
@@ -247,8 +255,8 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-MovieRealm/Pods-MovieRealm-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/BSKeyboardControls/BSKeyboardControls.framework",
 				"${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
@@ -256,8 +264,8 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BSKeyboardControls.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DropDown.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
@@ -309,6 +317,12 @@
 			files = (
 				9E2196162038A48D00735DF2 /* MovieListViewModel.swift in Sources */,
 				9E2195F920389A2D00735DF2 /* AppDelegate.swift in Sources */,
+				9E13C81A20397BE600DC3D2E /* Enums.swift in Sources */,
+				9E21963E2038B63A00735DF2 /* Constant.swift in Sources */,
+				9E21963A2038B58B00735DF2 /* BasicExtensions.swift in Sources */,
+				9E21963C2038B58B00735DF2 /* CommonMethods.swift in Sources */,
+				9E2196392038B58B00735DF2 /* NetworkManager.swift in Sources */,
+				9E21963B2038B58B00735DF2 /* UIViewController+Extension.swift in Sources */,
 				9E2196122038A23D00735DF2 /* MovieListVC.swift in Sources */,
 				9E2196142038A2BE00735DF2 /* Movie.swift in Sources */,
 			);

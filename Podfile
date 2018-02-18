@@ -7,7 +7,7 @@ target 'MovieRealm' do
     pod 'ReachabilitySwift'
     pod 'Alamofire'
     pod 'MBProgressHUD'
-    pod 'BSKeyboardControls'
     pod 'SDWebImage'
+    pod 'IQKeyboardManagerSwift'
     pod 'DropDown', :git=> 'https://github.com/AssistoLab/DropDown.git'
 end

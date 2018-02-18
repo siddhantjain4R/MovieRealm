@@ -43,13 +43,13 @@ class NetworkManager: NSObject {
         
         var completeURL = Constant.serverURL + path
         completeURL = completeURL.replacingOccurrences(of: " ", with: "%20")
-        var headerParam: HTTPHeaders?
+       // let headerParam: HTTPHeaders?
 //        if includeHeader {
 //            headerParam = ["Authorization": "Bearer FlochatIosTestApi"
 //            ]
 //        }
         if isReachable {
-            Alamofire.request(completeURL, method: httpMethod, parameters: param, encoding: JSONEncoding.default, headers: headerParam).responseJSON { response in
+            Alamofire.request(completeURL, method: httpMethod, parameters: param, encoding: JSONEncoding.default, headers: nil).responseJSON { response in
                 debugPrint(response)
                 switch response.result {
                 case .success:

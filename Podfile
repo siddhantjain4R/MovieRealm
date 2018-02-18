@@ -11,4 +11,5 @@ target 'MovieRealm' do
     pod 'IQKeyboardManagerSwift'
     pod 'DropDown', :git=> 'https://github.com/AssistoLab/DropDown.git'
     pod 'CCBottomRefreshControl'
+    pod 'youtube-ios-player-helper', '~> 0.1.4'
 end

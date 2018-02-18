@@ -177,23 +177,14 @@ extension MovieListViewModel: UICollectionViewDataSource {
     }
 }
 
-/*extension MovieListViewModel: UICollectionViewDelegate {
- func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
- //        if let detailVC = controller?.storyboard?.instantiateViewController(withIdentifier: "MovieDetailVC") as? MovieDetailVC {
- //            detailVC.movie = moviesArray[indexPath.item]
- //            controller?.push(viewController: detailVC, animated: true)
- //        }
- if let detailVC = controller?.storyboard?.instantiateViewController(withIdentifier: "LayoutViewController") as? LayoutViewController {
- controller?.push(viewController: detailVC, animated: true)
- }
- }
- 
- func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
- if indexPath.section == 1 && indexPath.item == moviesArray.count - 1 && isHavingNextPage {
- fetchMovies()
- }
- }
- }*/
+extension MovieListViewModel: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let detailVC = controller?.storyboard?.instantiateViewController(withIdentifier: "MovieDetailVC") as? MovieDetailVC {
+            detailVC.movie = isSearchRequest ? searchMovieArr[indexPath.row] : movieArr[indexPath.row]
+            controller?.navigationController!.pushViewController(detailVC, animated: true)
+        }
+    }
+}
 
 extension MovieListViewModel: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

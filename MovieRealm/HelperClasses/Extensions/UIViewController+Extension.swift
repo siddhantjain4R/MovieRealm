@@ -8,6 +8,8 @@
 
 import UIKit
 import MBProgressHUD
+import AVFoundation
+import AVKit
 
 extension UIViewController {
     /**
@@ -85,5 +87,29 @@ extension UIViewController {
         DispatchQueue.main.async(execute: {
             MBProgressHUD.hide(for: window, animated: true)
         })
+    }
+    
+    
+    /// Video Player
+    ///
+    /// - Parameter strUrl: pass the video Url
+    @objc func playVideo(strUrl: String) {
+        guard strUrl != "" else { return }
+        if NetworkManager.sharedInstance.isReachable == true {
+            guard let videoURL = URL(string: strUrl) else {
+                return
+            }
+            let player = AVPlayer(url: videoURL)
+            let playerViewController = AVPlayerViewController()
+            playerViewController.player = player
+            if #available(iOS 9.0, *) {
+                playerViewController.allowsPictureInPicturePlayback = true
+            } else {
+                // Fallback on earlier versions
+            }
+            self.present(playerViewController, animated: true) {
+                playerViewController.player?.play()
+            }
+        }
     }
 }

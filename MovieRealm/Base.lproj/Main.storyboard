@@ -383,7 +383,6 @@
                                     <constraint firstAttribute="trailing" secondItem="H4t-vd-aEW" secondAttribute="trailing" constant="10" id="6OZ-66-lwJ"/>
                                     <constraint firstAttribute="trailing" secondItem="2LR-fU-d3i" secondAttribute="trailing" constant="10" id="8t0-Md-Tuw"/>
                                     <constraint firstItem="H4t-vd-aEW" firstAttribute="top" secondItem="gtQ-rS-Syt" secondAttribute="bottom" constant="8" id="92b-0o-mcJ"/>
-                                    <constraint firstItem="2LR-fU-d3i" firstAttribute="centerX" secondItem="5X0-6n-0MM" secondAttribute="centerX" id="9Z4-wn-PTs"/>
                                     <constraint firstItem="Aja-ft-UKl" firstAttribute="leading" secondItem="5X0-6n-0MM" secondAttribute="leading" constant="10" id="9ZE-8N-LlC"/>
                                     <constraint firstItem="aYE-8c-ao0" firstAttribute="leading" secondItem="C7G-J7-sAz" secondAttribute="leading" id="HCY-II-GbS"/>
                                     <constraint firstItem="gtQ-rS-Syt" firstAttribute="trailing" secondItem="Aja-ft-UKl" secondAttribute="trailing" constant="4" id="J9q-j9-HFl"/>
@@ -414,10 +413,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="2LR-fU-d3i" firstAttribute="leading" secondItem="tcJ-AM-6Os" secondAttribute="leading" constant="10" id="8zX-gc-rFl"/>
                             <constraint firstItem="5X0-6n-0MM" firstAttribute="leading" secondItem="tcJ-AM-6Os" secondAttribute="leading" id="Ldt-ku-wiO"/>
                             <constraint firstItem="tcJ-AM-6Os" firstAttribute="trailing" secondItem="5X0-6n-0MM" secondAttribute="trailing" id="Njq-dT-io3"/>
                             <constraint firstItem="tcJ-AM-6Os" firstAttribute="bottom" secondItem="5X0-6n-0MM" secondAttribute="bottom" id="Tl4-ZT-snn"/>
                             <constraint firstItem="5X0-6n-0MM" firstAttribute="top" secondItem="tcJ-AM-6Os" secondAttribute="top" id="WWj-JC-2mf"/>
+                            <constraint firstItem="tcJ-AM-6Os" firstAttribute="trailing" secondItem="2LR-fU-d3i" secondAttribute="trailing" constant="10" id="to6-iu-Npx"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="tcJ-AM-6Os"/>
                     </view>

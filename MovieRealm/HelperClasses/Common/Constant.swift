@@ -15,6 +15,6 @@ class Constant: NSObject {
     
     ///Common Url
     static let serverURL = "https://api.themoviedb.org/3/movie/"
-    static let movieDBImageURL = " http://image.tmdb.org/t/p/w185/"
+    static let movieDBImageURL = "http://image.tmdb.org/t/p/w185/"
     
 }

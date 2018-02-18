@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 extension UIViewController {
     /**
@@ -58,5 +59,31 @@ extension UIViewController {
         if let navigationController = appDelegate?.window?.rootViewController as? UINavigationController {
             navigationController.setViewControllers([viewController], animated: animated)
         }
+    }
+    
+    /// Show progress view over current VC
+    func showProgressView(with title: String) {
+        hideProgressView()
+        guard let window = UIApplication.shared.delegate?.window as? UIWindow else { return }
+        DispatchQueue.main.async(execute: {
+            let hud = MBProgressHUD.showAdded(to: window, animated: true)
+            hud.contentColor = UIColor.white
+            hud.bezelView.alpha = 1.0
+            hud.bezelView.color = UIColor.clear
+            hud.bezelView.style = .solidColor
+            hud.backgroundView.color = UIColor.black
+            hud.backgroundView.alpha = 0.6
+            hud.backgroundView.style = .solidColor
+            hud.label.text = title
+            //hud.detailsLabel.text = description
+        })
+    }
+    
+    /// Hide progress view over current VC
+    func hideProgressView() {
+        guard let window = UIApplication.shared.delegate?.window as? UIWindow else { return }
+        DispatchQueue.main.async(execute: {
+            MBProgressHUD.hide(for: window, animated: true)
+        })
     }
 }

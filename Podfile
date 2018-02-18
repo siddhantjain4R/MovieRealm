@@ -10,4 +10,5 @@ target 'MovieRealm' do
     pod 'SDWebImage'
     pod 'IQKeyboardManagerSwift'
     pod 'DropDown', :git=> 'https://github.com/AssistoLab/DropDown.git'
+    pod 'CCBottomRefreshControl'
 end

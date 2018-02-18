@@ -10,26 +10,23 @@ import UIKit
 
 class MovieListVC: UIViewController {
 
+    // MARK: - Variables
+    var movieListViewModel: MovieListViewModel?
+    
+    // MARK: - Outlets
+    @IBOutlet weak var movieListCollectionView: UICollectionView!
+    
+    // MARK: - Life Cycle Method
     override func viewDidLoad() {
         super.viewDidLoad()
-        let m = MovieListViewModel()
-        m.fetchMoviesFromApi(pageCount: 1, filter: MovieFilterType.mostPopular.rawValue)
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        movieListViewModel = MovieListViewModel( movieListCollectionView, controller: self)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.showProgressView(with: "Fetching Movies")
+            self.movieListViewModel? .fetchMoviesFromApi(filter: MovieFilterType.mostPopular.rawValue)
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    deinit {
+        movieListViewModel = nil
     }
-    */
-
 }

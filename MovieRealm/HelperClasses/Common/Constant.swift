@@ -14,7 +14,7 @@ class Constant: NSObject {
     static let apiKeyMovieDB = "7099b1aa54136489335e0e34023e9aed"
     
     ///Common Url
-    static let serverURL = "https://api.themoviedb.org/3/movie/"
+    static let serverURL = "https://api.themoviedb.org/3/"
     static let movieDBImageURL = "http://image.tmdb.org/t/p/w185/"
     
 }

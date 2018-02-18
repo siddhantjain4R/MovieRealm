@@ -29,6 +29,9 @@
                         <color key="barTintColor" red="0.74685317279999996" green="0.8194817901" blue="0.84474170209999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1Hr-zk-dDj">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="SAN-eU-Wcv" kind="relationship" relationship="rootViewController" id="G5G-BB-8X5"/>
                     </connections>
@@ -45,6 +48,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gfe-hp-Uh9">
+                                <rect key="frame" x="-0.5" y="0.0" width="375" height="667"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="8Aw-QR-KAs">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <vibrancyEffect>
+                                    <blurEffect style="regular"/>
+                                </vibrancyEffect>
+                            </visualEffectView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="yth-qJ-YEu">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -130,7 +143,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="0.0"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Most Popular" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mgg-7Z-oT7">
-                                                <rect key="frame" x="4" y="0.0" width="341" height="0.0"/>
+                                                <rect key="frame" x="4" y="0.0" width="371" height="0.0"/>
                                                 <fontDescription key="fontDescription" name="SFUIText-Regular" family="SF UI Text" pointSize="18"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
@@ -154,10 +167,10 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="Mgg-7Z-oT7" secondAttribute="trailing" id="05F-i5-6VQ"/>
                                             <constraint firstAttribute="bottom" secondItem="Mgg-7Z-oT7" secondAttribute="bottom" id="1kc-LO-Zdb"/>
                                             <constraint firstItem="Mgg-7Z-oT7" firstAttribute="top" secondItem="c0r-m3-TXl" secondAttribute="top" id="2rg-70-sGf"/>
                                             <constraint firstAttribute="trailing" secondItem="d3b-zx-7rp" secondAttribute="trailing" id="9BM-Qj-5zv"/>
-                                            <constraint firstItem="zSL-DZ-EUD" firstAttribute="leading" secondItem="Mgg-7Z-oT7" secondAttribute="trailing" id="IrX-AN-jNa"/>
                                             <constraint firstItem="d3b-zx-7rp" firstAttribute="leading" secondItem="c0r-m3-TXl" secondAttribute="leading" id="M7P-s8-Fd7"/>
                                             <constraint firstItem="zSL-DZ-EUD" firstAttribute="top" secondItem="c0r-m3-TXl" secondAttribute="top" id="Ny3-FV-Zxe"/>
                                             <constraint firstAttribute="trailing" secondItem="zSL-DZ-EUD" secondAttribute="trailing" id="Pu8-EX-4Nf"/>
@@ -188,19 +201,26 @@
                                 </constraints>
                                 <color key="barTintColor" red="0.74685317279999996" green="0.8194817901" blue="0.84474170209999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="SAN-eU-Wcv" id="wUI-H9-rui"/>
+                                </connections>
                             </searchBar>
                         </subviews>
                         <color key="backgroundColor" red="0.74685317277908325" green="0.81948179006576538" blue="0.84474170207977295" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="XcE-o6-GfB" firstAttribute="trailing" secondItem="DM4-g6-uN9" secondAttribute="trailing" id="0WC-Vf-zk7"/>
+                            <constraint firstItem="Gfe-hp-Uh9" firstAttribute="top" secondItem="lkj-kG-9Ql" secondAttribute="top" id="0ZX-xX-FuI"/>
                             <constraint firstItem="DM4-g6-uN9" firstAttribute="top" secondItem="Fx1-3V-cZB" secondAttribute="top" id="75X-Gs-htT"/>
+                            <constraint firstAttribute="bottom" secondItem="Gfe-hp-Uh9" secondAttribute="bottom" id="8pB-p2-nW0"/>
                             <constraint firstItem="DM4-g6-uN9" firstAttribute="trailing" secondItem="Fx1-3V-cZB" secondAttribute="trailing" id="Cj0-mh-DK9"/>
+                            <constraint firstItem="Gfe-hp-Uh9" firstAttribute="leading" secondItem="lkj-kG-9Ql" secondAttribute="leading" id="WJv-As-i25"/>
                             <constraint firstItem="Fx1-3V-cZB" firstAttribute="trailing" secondItem="yth-qJ-YEu" secondAttribute="trailing" id="Yic-nJ-kDn"/>
                             <constraint firstItem="XcE-o6-GfB" firstAttribute="top" secondItem="DM4-g6-uN9" secondAttribute="top" id="et1-L3-ljd"/>
                             <constraint firstItem="Fx1-3V-cZB" firstAttribute="bottom" secondItem="yth-qJ-YEu" secondAttribute="bottom" id="fF0-96-Jd4"/>
                             <constraint firstItem="DM4-g6-uN9" firstAttribute="leading" secondItem="Fx1-3V-cZB" secondAttribute="leading" id="j5F-kM-ujq"/>
                             <constraint firstItem="XcE-o6-GfB" firstAttribute="leading" secondItem="DM4-g6-uN9" secondAttribute="leading" id="ohu-zc-ErW"/>
                             <constraint firstItem="XcE-o6-GfB" firstAttribute="bottom" secondItem="DM4-g6-uN9" secondAttribute="bottom" id="pG1-rQ-7mV"/>
+                            <constraint firstItem="Fx1-3V-cZB" firstAttribute="trailing" secondItem="Gfe-hp-Uh9" secondAttribute="trailing" id="qQS-7U-PZv"/>
                             <constraint firstItem="yth-qJ-YEu" firstAttribute="leading" secondItem="Fx1-3V-cZB" secondAttribute="leading" id="r4s-6f-PAs"/>
                             <constraint firstItem="yth-qJ-YEu" firstAttribute="top" secondItem="DM4-g6-uN9" secondAttribute="bottom" id="uyP-LG-Xls"/>
                         </constraints>

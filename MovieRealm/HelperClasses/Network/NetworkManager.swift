@@ -41,7 +41,8 @@ class NetworkManager: NSObject {
     // MARK: - Request Method
     func requestFor(path: String, param: [String: Any]?, httpMethod: HTTPMethod, includeHeader: Bool, success:@escaping (_ response: [String: Any]) -> Void, failure:@escaping (_ response: [String: Any], _ error: Error?) -> Void) {
         
-        let completeURL = Constant.serverURL + path
+        var completeURL = Constant.serverURL + path
+        completeURL = completeURL.replacingOccurrences(of: " ", with: "%20")
         var headerParam: HTTPHeaders?
 //        if includeHeader {
 //            headerParam = ["Authorization": "Bearer FlochatIosTestApi"

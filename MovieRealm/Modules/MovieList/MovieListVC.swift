@@ -23,10 +23,10 @@ class MovieListVC: UIViewController {
     
     // MARK: - User Actions
     @IBAction func searchTapped(_ sender: Any) {
-        showHideSearchOrFilterView(isSearchView: false)
+        showHideSearchOrFilterView(isFilterView: false)
     }
     @IBAction func filterTapped(_ sender: Any) {
-        showHideSearchOrFilterView(isSearchView: true)
+        showHideSearchOrFilterView(isFilterView: true)
     }
     
     @IBAction func showHideFilterTapped(_ sender: Any) {
@@ -50,24 +50,26 @@ class MovieListVC: UIViewController {
     }
     
     // MARK: - Other Methods
-    func showHideSearchOrFilterView(isSearchView: Bool) {
+    func showHideSearchOrFilterView(isFilterView: Bool) {
+        movieSearchBar.resignFirstResponder()
         if searchViewHeightConstraint.constant == 56 {
-            if movieSearchBar.isHidden == false && isSearchView == true {
+            if movieSearchBar.isHidden == false && isFilterView == true {
                 movieSearchBar.isHidden = true
-            } else if movieSearchBar.isHidden == true && isSearchView == false {
+            } else if movieSearchBar.isHidden == true && isFilterView == false {
                 movieSearchBar.isHidden = false
             } else {
                 searchViewHeightConstraint.constant = 0
             }
         } else {
             searchViewHeightConstraint.constant = 56
-            movieSearchBar.isHidden = isSearchView
+            movieSearchBar.isHidden = isFilterView
         }
     }
     
     func setupDropDown() {
-        dropdown.direction = .any
+        dropdown.direction = .bottom
         dropdown.anchorView = filterLbl
+        dropdown.bottomOffset = CGPoint(x: 0, y: 56)
         dropdown.dataSource = ["Most Popular", "Highest Rated"]
         dropdown.selectionAction = { [unowned self] (index, item) in
             self.filterLbl.text = item
@@ -79,6 +81,34 @@ class MovieListVC: UIViewController {
             } else {
                 self.movieListViewModel? .fetchMoviesFromApi(filter: MovieFilterType.HighestRated.rawValue)
             }
+        }
+    }
+}
+
+extension MovieListVC: UISearchBarDelegate {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(true, animated: true)
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(false, animated: true)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        view.endEditing(true)
+        movieListViewModel?.resetAllSearchVariables()
+        showHideSearchOrFilterView(isFilterView: false)
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if searchBar.text != "" {
+            view.endEditing(true)
+            movieListViewModel?.resetAllSearchVariables(reload: false)
+            self.showProgressView(with: "Searching movies")
+            movieListViewModel?.fetchSearchMatchingMoviesFromApi(querry: searchBar.text ?? "")
         }
     }
 }
